@@ -11,12 +11,24 @@ from pow_monitor.sources.base import FetchError, http_get_json
 logger = logging.getLogger(__name__)
 
 
+def _field_value(item: dict, field: str) -> Any:
+    node: Any = item
+    for part in field.split("."):
+        if not part:
+            continue
+        if isinstance(node, dict):
+            node = node.get(part)
+        else:
+            return None
+    return node
+
+
 def _extract_ids(data: Any, mode: str, list_path: str, id_field: str) -> list[str]:
     if mode == "list" and isinstance(data, list):
         out: list[str] = []
         for item in data:
             if isinstance(item, dict):
-                val = str(item.get(id_field) or item.get("id") or item.get("symbol") or "")
+                val = str(_field_value(item, id_field) or item.get("id") or item.get("symbol") or "")
                 if val:
                     out.append(val)
             elif item is not None:

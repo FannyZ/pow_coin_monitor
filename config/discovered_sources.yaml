@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: ""
-updated_by: ""
-notes: ""
+updated_at: "2026-07-04T07:45:00Z"
+updated_by: cursor-agent
+notes: "新增 CryptUnit PoW 币列表、FreiExchange 小所 ticker、Grand Pool 矿池 API"
 
 sources:
   rss_feeds:
@@ -15,11 +15,32 @@ sources:
   telegram_public:
     channels: []
   exchanges:
-    exchanges: []
+    exchanges:
+      - name: freiexchange
+        type: generic
+        url: https://api.freiexchange.com/public/ticker
+        web_url: https://freiexchange.com/market
+        enabled: true
   github:
-    queries: []
+    queries:
+      - "mainnet gpu mining created:>{since}"
   github_releases:
     repos: []
   generic_json:
     enabled: true
-    endpoints: []
+    endpoints:
+      - name: cryptunit
+        url: https://www.cryptunit.com/api/coins
+        enabled: true
+        mode: list
+        id_field: ticker
+        title_template: "{id} new on cryptunit"
+        link_template: "https://www.cryptunit.com/coin/{id}"
+      - name: grandpool
+        url: https://api.grandpool.io/pools
+        enabled: true
+        mode: list_path
+        list_path: pools
+        id_field: info.blockchain
+        title_template: "{id} new on grandpool"
+        link_template: "https://grandpool.io/"

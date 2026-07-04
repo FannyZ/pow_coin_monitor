@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-04T07:35:57Z
+生成时间 UTC: 2026-07-04T07:41:35Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **34**
+- 活跃端点: **38**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -27,6 +27,7 @@
 | github_release | BlockZero | https://github.com/Rexemre/blockzero-core/releases.atom |
 | github_release | C64 Chain | https://github.com/oxynaz/c64chain-mainnet/releases.atom |
 | exchange | xeggex | https://api.xeggex.com/api/v2/market/getlist |
+| exchange | freiexchange | https://api.freiexchange.com/public/ticker |
 | nicehash | algorithms | https://api2.nicehash.com/main/api/v2/mining/algorithms |
 | bitcointalk | announcements | https://bitcointalk.org/index.php?board=159.0 |
 | github_search | pow mining gpu created:>{since} | https://api.github.com/search/repositories?q=pow mining gpu created:>{since} |
@@ -38,12 +39,15 @@
 | github_search | topic:proof-of-work pushed:>{since} | https://api.github.com/search/repositories?q=topic:proof-of-work pushed:>{since} |
 | github_search | stratum genesis block reward in:readme created:>{since} | https://api.github.com/search/repositories?q=stratum genesis block reward in:readme created:>{since} |
 | github_search | org:btxchain OR org:ParallaxProtocol pushed:>{since} | https://api.github.com/search/repositories?q=org:btxchain OR org:ParallaxProtocol pushed:>{since} |
+| github_search | mainnet gpu mining created:>{since} | https://api.github.com/search/repositories?q=mainnet gpu mining created:>{since} |
 | miningpoolstats | sitemap | https://miningpoolstats.stream/sitemap.xml |
 | whattomine | coins | https://whattomine.com/coins.json |
 | safetrade | home | https://safetrade.com/ |
 | coingecko_search | pow mining | https://api.coingecko.com/api/v3/search?query=pow mining |
 | coingecko_search | gpu mineable | https://api.coingecko.com/api/v3/search?query=gpu mineable |
 | coingecko_search | kawpow | https://api.coingecko.com/api/v3/search?query=kawpow |
+| generic_json | cryptunit | https://www.cryptunit.com/api/coins |
+| generic_json | grandpool | https://api.grandpool.io/pools |
 
 ## Agent 如何追加新来源
 
