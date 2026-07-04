@@ -25,7 +25,7 @@ Telegram 凭证从 `btc_trend_monitor` 项目复用（或你在 Automation Secre
 
 ## 仓库
 - 工作目录：当前 checkout 的 `pow_coin_monitor` 仓库根目录
-- 若不在仓库内，先 `git clone https://github.com/YOUR_GITHUB_USER/pow_coin_monitor.git` 并 cd 进入
+- 若不在仓库内，先 `git clone https://github.com/FannyZ/pow_coin_monitor.git` 并 cd 进入
 
 ## Telegram 凭证（二选一，优先 A）
 A. 从 btc_trend_monitor 同步（本地/同机 Cloud Agent）：
