@@ -4,6 +4,7 @@ __pycache__/
 *.egg-info/
 .env
 .env.bak
+.cursor/mcp.secrets.env
 data/*
 !data/.gitkeep
 .DS_Store

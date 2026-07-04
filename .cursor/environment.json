@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "repos": [
+    {
+      "url": "https://github.com/FannyZ/pow_coin_monitor",
+      "branch": "main",
+      "path": "."
+    }
+  ],
+  "dockerfile": ".cursor/Dockerfile",
+  "install": "bash .cursor/scripts/cloud-agent-install.sh"
+}
