@@ -12,7 +12,7 @@ Telegram 凭证从 `btc_trend_monitor` 项目复用（或你在 Automation Secre
 | **Name** | PoW Coin Daily Scan |
 | **Description** | 每日扫描互联网新 PoW/GPU 可挖币，Telegram 推送结果 |
 | **Trigger** | Cron：`0 0,12 * * *`（UTC 0:00 / 12:00 = 北京 8:00 / 20:00） |
-| **Repo** | `YOUR_GITHUB_USER/pow_coin_monitor`（推送后替换） |
+| **Repo** | `FannyZ/pow_coin_monitor` |
 | **Branch** | `main` |
 | **Tools** | Shell / Terminal（允许运行脚本） |
 
