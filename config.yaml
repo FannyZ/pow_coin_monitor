@@ -1,0 +1,218 @@
+monitor:
+  scan_name: pow_coin_daily
+  min_score: 25
+  notify_min_score: 40
+  max_results_per_source: 30
+  request_timeout_sec: 20
+  request_retries: 1
+  user_agent: "PowCoinMonitor/2.0 (+local; educational)"
+
+sources:
+  # --- Tier 1: earliest signals (multi-model consensus) ---
+  telegram_public:
+    enabled: true
+    baseline_path: data/telegram_baseline.json
+    max_per_channel: 20
+    channels:
+      - name: miningrelease
+        slug: miningrelease
+        enabled: true
+
+  yiimp_pools:
+    enabled: true
+    baseline_path: data/yiimp_baseline.json
+    max_coins: 30
+    pools:
+      - name: zpool
+        url: https://zpool.ca/api/currencies
+        referer: https://zpool.ca/
+        enabled: true
+      - name: zergpool
+        url: https://zergpool.com/api/currencies
+        referer: https://zergpool.com/
+        enabled: true
+      - name: rplant
+        url: https://pool.rplant.xyz/api/currencies
+        referer: https://pool.rplant.xyz/
+        enabled: true
+
+  rss_feeds:
+    enabled: true
+    baseline_path: data/rss_baseline.json
+    max_per_feed: 12
+    feeds:
+      - name: reddit_gpumining
+        url: https://www.reddit.com/r/gpumining/new/.rss
+        enabled: true
+        keywords: []
+      - name: reddit_cryptomining
+        url: https://www.reddit.com/r/cryptomining/new/.rss
+        enabled: true
+        keywords: []
+      - name: reddit_search
+        url: https://www.reddit.com/search.rss?q=kawpow+OR+randomx+OR+%22fair+launch%22+OR+%22new+coin%22&sort=new
+        enabled: true
+        keywords: []
+      - name: twominers_blog
+        url: https://2miners.com/blog/feed/
+        enabled: true
+        keywords: ["pool", "coin", "mining", "kawpow", "mainnet"]
+      - name: hnrss_pow
+        url: https://hnrss.org/newest?q=pow+OR+kawpow+OR+randomx+OR+%22new+coin%22
+        enabled: true
+        keywords: []
+      - name: litecointalk_ann
+        url: https://litecointalk.io/c/project-announcements/6.rss
+        enabled: true
+        keywords: []
+
+  rainbowminer:
+    enabled: true
+    baseline_path: data/rainbowminer_baseline.json
+    max_coins: 30
+    url: https://raw.githubusercontent.com/RainbowMiner/RainbowMiner/master/Data/coinsdb.json
+
+  # --- Tier 2: structured APIs ---
+  coinpaprika:
+    enabled: true
+    baseline_path: data/coinpaprika_baseline.json
+    url: https://api.coinpaprika.com/v1/coins
+    only_new: true
+    max_coins: 30
+
+  github_releases:
+    enabled: true
+    baseline_path: data/github_releases_baseline.json
+    max_per_repo: 3
+    repos:
+      - repo: btxchain/btx
+        label: BTX
+        enabled: true
+      - repo: ParallaxProtocol/parallax
+        label: Parallax
+        enabled: true
+      - repo: Rexemre/blockzero-core
+        label: BlockZero
+        enabled: true
+      - repo: oxynaz/c64chain-mainnet
+        label: C64 Chain
+        enabled: true
+
+  exchanges:
+    enabled: true
+    baseline_path: data/exchanges_baseline.json
+    max_per_exchange: 20
+    exchanges:
+      - name: xeggex
+        type: xeggex
+        url: https://api.xeggex.com/api/v2/market/getlist
+        web_url: https://xeggex.com/
+        referer: https://xeggex.com/
+        enabled: true
+
+  nicehash:
+    enabled: true
+    baseline_path: data/nicehash_baseline.json
+    url: https://api2.nicehash.com/main/api/v2/mining/algorithms
+    max_items: 20
+
+  # --- Tier 3: existing sources ---
+  bitcointalk:
+    enabled: true
+    url: https://bitcointalk.org/index.php?board=159.0
+    max_topics: 40
+
+  github:
+    enabled: true
+    queries:
+      - "pow mining gpu created:>{since}"
+      - "kawpow cryptocurrency created:>{since}"
+      - "proof of work blockchain gpu created:>{since}"
+      - "matmul mining created:>{since}"
+      - "progpow miner created:>{since}"
+      - "fair launch RandomX pushed:>{since}"
+      - "topic:proof-of-work pushed:>{since}"
+      - "stratum genesis block reward in:readme created:>{since}"
+      - "org:btxchain OR org:ParallaxProtocol pushed:>{since}"
+    max_per_query: 12
+    since_days: 90
+
+  miningpoolstats:
+    enabled: true
+    url: https://miningpoolstats.stream/
+    sitemap_url: https://miningpoolstats.stream/sitemap.xml
+    baseline_path: data/mps_baseline.json
+    max_coins: 50
+
+  whattomine:
+    enabled: true
+    url: https://whattomine.com/coins.json
+    baseline_path: data/wtm_baseline.json
+    max_coins: 30
+
+  safetrade:
+    enabled: true
+    url: https://safetrade.com/
+    max_announcements: 20
+
+  coingecko:
+    enabled: true
+    search_queries:
+      - "pow mining"
+      - "gpu mineable"
+      - "kawpow"
+    max_per_query: 10
+    query_delay_sec: 2.0
+
+keywords:
+  high:
+    - gpu
+    - gpu-mining
+    - gpu mining
+    - kawpow
+    - progpow
+    - matmul
+    - randomx
+    - proof of work
+    - proof-of-work
+    - pow
+    - mineable
+    - mining pool
+    - mainnet
+    - fair launch
+    - no premine
+    - 0% premine
+    - asic-resistant
+    - asic resistant
+    - stratum
+  medium:
+    - miner
+    - testnet
+    - pre-ann
+    - "[ann]"
+    - "[pre-ann]"
+    - blockchain
+    - cryptocurrency
+    - coin
+    - new pool
+    - algorithm
+  negative:
+    - airdrop only
+    - presale
+    - ico
+    - ieo
+    - staking only
+    - proof of stake
+    - pos only
+
+telegram:
+  enabled: true
+  max_coins_per_message: 8
+  parse_mode: Markdown
+
+logging:
+  level: INFO
+  file: data/monitor.log
+
+storage:
+  db_path: data/coins.db
