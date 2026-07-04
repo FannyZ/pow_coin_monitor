@@ -58,3 +58,34 @@ python3 scripts/test_telegram.py
 ```bash
 0 8,20 * * * cd /Users/fan/Downloads/pow_coin_monitor && ./run.sh >> data/cron.log 2>&1
 ```
+
+## Cursor Cloud Agent（已从 fitness 项目复制 GitHub 配置）
+
+与 `~/Downloads/fitness/.cursor/` 相同模式：
+
+| 文件 | 作用 |
+|------|------|
+| `.cursor/environment.json` | Cloud Agent 拉取 `FannyZ/pow_coin_monitor` |
+| `.cursor/mcp.json` | GitHub MCP（`GITHUB_PAT`） |
+| `.cursor/Dockerfile` | Cloud 运行环境 |
+| `.cursor/scripts/cloud-agent-install.sh` | 安装 Python 依赖 |
+
+```bash
+# 1. 复制 GitHub PAT（与 fitness 共用，不提交 git）
+cp ~/Downloads/fitness/.cursor/mcp.secrets.env ~/Downloads/pow_coin_monitor/.cursor/
+
+# 2. 安装依赖 + 同步 Telegram
+bash .cursor/scripts/setup-ai-dev.sh
+source .cursor/mcp.secrets.env
+```
+
+Automation 说明见 `docs/AUTOMATION_PROMPT.md`。
+
+## 推送到 GitHub
+
+远程仓库需先在 GitHub 网页创建（fitness 的 `GITHUB_PAT` 无建库权限，只能读/PR）：
+
+1. https://github.com/new → 名称 `pow_coin_monitor`，不要勾选 README  
+2. `git push -u origin main`
+
+或使用带 **repo** 权限的新 PAT：`./scripts/publish_github.sh`
