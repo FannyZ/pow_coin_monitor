@@ -79,7 +79,7 @@ bash .cursor/scripts/setup-ai-dev.sh
 source .cursor/mcp.secrets.env
 ```
 
-Automation 说明见 `docs/AUTOMATION_PROMPT.md`。
+Automation Prompt：`docs/DAILY_SELF_IMPROVING_AGENT_PROMPT.md`（每日扫描 + 自学习扩充来源）
 
 ## 推送到 GitHub
 

@@ -67,6 +67,9 @@ def score_lead(lead: CoinLead, keywords: dict) -> CoinLead:
     if lead.source.startswith("exchange:"):
         score += 10
         reasons.append("small_exchange")
+    if lead.source.startswith("generic_json:"):
+        score += 12
+        reasons.append("generic_json")
 
     # URL hints
     url_l = lead.url.lower()

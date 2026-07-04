@@ -7,11 +7,13 @@ from pow_monitor.config import AppConfig, ROOT
 from pow_monitor.models import CoinLead, now_iso
 from pow_monitor.notify.telegram import format_coin_alert, send_telegram_message
 from pow_monitor.scoring import score_lead
+from pow_monitor.inventory import write_inventory
 from pow_monitor.sources import (
     fetch_bitcointalk,
     fetch_coingecko,
     fetch_coinpaprika,
     fetch_exchanges,
+    fetch_generic_json,
     fetch_github,
     fetch_github_releases,
     fetch_miningpoolstats,
@@ -39,6 +41,7 @@ def _collect_leads(cfg: AppConfig) -> tuple[list[CoinLead], list[str], list[str]
     fetchers = [
         ("telegram_public", fetch_telegram_public),
         ("yiimp_pools", fetch_yiimp_pools),
+        ("generic_json", fetch_generic_json),
         ("rss_feeds", fetch_rss_feeds),
         ("rainbowminer", fetch_rainbowminer),
         ("coinpaprika", fetch_coinpaprika),
@@ -146,4 +149,12 @@ def run_scan(cfg: AppConfig, *, dry_run: bool = False, send_telegram: bool = Tru
         "new_leads": new_leads[:20],
         "notify_candidates": notify_candidates[:10],
     }
+
+    if cfg.discovery.get("write_inventory_after_scan", True):
+        try:
+            inv_path = write_inventory(cfg)
+            report["inventory_path"] = str(inv_path.relative_to(ROOT))
+        except Exception as exc:
+            logger.warning("Failed to write source inventory: %s", exc)
+
     return report

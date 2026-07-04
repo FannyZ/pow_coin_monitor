@@ -1,0 +1,25 @@
+# Agent / automation 通过 PR 或 commit 追加新来源（勿改 config.yaml 主配置）
+# 支持类型：rss_feeds.feeds | yiimp_pools.pools | telegram_public.channels
+#          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
+
+version: 1
+updated_at: ""
+updated_by: ""
+notes: ""
+
+sources:
+  rss_feeds:
+    feeds: []
+  yiimp_pools:
+    pools: []
+  telegram_public:
+    channels: []
+  exchanges:
+    exchanges: []
+  github:
+    queries: []
+  github_releases:
+    repos: []
+  generic_json:
+    enabled: true
+    endpoints: []

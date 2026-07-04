@@ -164,6 +164,17 @@ sources:
     max_per_query: 10
     query_delay_sec: 2.0
 
+  generic_json:
+    enabled: true
+    baseline_path: data/generic_json_baseline.json
+    max_per_endpoint: 20
+    endpoints: []
+
+discovery:
+  discovered_sources_path: config/discovered_sources.yaml
+  inventory_md_path: docs/SOURCE_INVENTORY.md
+  write_inventory_after_scan: true
+
 keywords:
   high:
     - gpu

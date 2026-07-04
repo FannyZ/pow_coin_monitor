@@ -2,6 +2,7 @@ from pow_monitor.sources.bitcointalk import fetch_bitcointalk
 from pow_monitor.sources.coingecko import fetch_coingecko
 from pow_monitor.sources.coinpaprika import fetch_coinpaprika
 from pow_monitor.sources.exchanges import fetch_exchanges
+from pow_monitor.sources.generic_json import fetch_generic_json
 from pow_monitor.sources.github_releases import fetch_github_releases
 from pow_monitor.sources.github_search import fetch_github
 from pow_monitor.sources.miningpoolstats import fetch_miningpoolstats
@@ -16,6 +17,7 @@ from pow_monitor.sources.yiimp_pools import fetch_yiimp_pools
 __all__ = [
     "fetch_bitcointalk",
     "fetch_github",
+    "fetch_generic_json",
     "fetch_github_releases",
     "fetch_miningpoolstats",
     "fetch_whattomine",

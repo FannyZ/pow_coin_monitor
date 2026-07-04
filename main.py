@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT))
 
 from pow_monitor.config import ROOT as PROJECT_ROOT, load_config
 from pow_monitor.engine import run_scan
+from pow_monitor.inventory import build_inventory, write_inventory
 
 
 def setup_logging(level: str = "INFO") -> None:
@@ -53,11 +54,19 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true", help="Scan only, do not send Telegram")
     parser.add_argument("--no-telegram", action="store_true", help="Disable Telegram even if configured")
     parser.add_argument("--json", action="store_true", help="Print full JSON report")
+    parser.add_argument("--inventory", action="store_true", help="Generate source inventory only")
     parser.add_argument("--config", type=Path, default=None, help="Path to config.yaml")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
     setup_logging(cfg.logging.get("level", "INFO"))
+
+    if args.inventory:
+        path = write_inventory(cfg)
+        inv = build_inventory(cfg)
+        print(json.dumps(inv, ensure_ascii=False, indent=2))
+        print(f"\nInventory written to {path}")
+        return 0
 
     report = run_scan(
         cfg,
