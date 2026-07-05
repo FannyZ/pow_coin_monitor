@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-04T07:45:00Z"
+updated_at: "2026-07-05T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 CryptUnit PoW 币列表、FreiExchange 小所 ticker、Grand Pool 矿池 API"
+notes: "新增 MiningPoolHub 矿池 API、Tensorium/Irium GitHub Releases、TensorHash GitHub 搜索"
 
 sources:
   rss_feeds:
@@ -24,8 +24,15 @@ sources:
   github:
     queries:
       - "mainnet gpu mining created:>{since}"
+      - "TensorHash mainnet created:>{since}"
   github_releases:
-    repos: []
+    repos:
+      - repo: tensorium-labs/tensorium-core
+        label: Tensorium
+        enabled: true
+      - repo: iriumlabs/irium
+        label: Irium
+        enabled: true
   generic_json:
     enabled: true
     endpoints:
@@ -44,3 +51,11 @@ sources:
         id_field: info.blockchain
         title_template: "{id} new on grandpool"
         link_template: "https://grandpool.io/"
+      - name: miningpoolhub
+        url: https://miningpoolhub.com/index.php?page=api&action=getminingandprofitsstatistics&api_key=
+        enabled: true
+        mode: list_path
+        list_path: return
+        id_field: symbol
+        title_template: "{id} new on miningpoolhub"
+        link_template: "https://miningpoolhub.com/index.php?page=getdashboard&user=&id={id}"
