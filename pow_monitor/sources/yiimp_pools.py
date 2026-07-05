@@ -27,7 +27,15 @@ def _lead_from_yiimp(source: str, ticker: str, info: dict, pool_url: str) -> Coi
         summary=summary or f"New coin on pool API: {ticker}",
         tags=tags,
         discovered_at=now_iso(),
-        extra={"ticker": ticker, "algo": algo, "port": port, "pool": source},
+        extra={
+            "ticker": ticker,
+            "algo": algo,
+            "port": port,
+            "pool": source,
+            "website": site,
+            "explorer": explorer,
+            "pool_url": pool_url,
+        },
     )
 
 

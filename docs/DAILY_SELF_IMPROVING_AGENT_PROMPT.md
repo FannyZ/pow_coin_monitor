@@ -22,6 +22,7 @@
 | `TELEGRAM_BOT_TOKEN` | Bot Token |
 | `TELEGRAM_CHAT_ID` | Chat ID |
 | `HTTPS_PROXY` | 可选 |
+| `GITHUB_PAT` | 可选，用于 MCP push |
 
 ---
 
@@ -57,6 +58,12 @@
 扫描结束会自动更新 docs/SOURCE_INVENTORY.md（当前已接入端点清单）。
 
 读取并记录：new_count, total_leads, new_leads, notify_candidates, telegram_sent, sources_ok, sources_empty, sources_failed。
+
+说明：若 notify_candidates 非空，run.sh 会自动发送「即时新币推送」。每条新币消息已包含（有则显示）：
+- 算法 / 代号
+- 官网、浏览器、GitHub、矿池链接
+- 钱包地址（Telegram 公告或 API 能解析到的）
+- 摘要与命中关键词
 
 ═══════════════════════════════════════
 阶段 2：资源盘点（必做）
@@ -157,9 +164,9 @@ queries:
 - name: cryptunit
   url: https://www.cryptunit.com/api/coins
   enabled: true
-  mode: list          # 或 dict_keys | list_path
+  mode: list
   id_field: id
-  list_path: ""       # mode=list_path 时用，如 coins
+  list_path: ""
   title_template: "{name} new on cryptunit"
   link_template: "https://www.cryptunit.com/coins/{id}"
 ```
@@ -176,6 +183,7 @@ queries:
 2. 在 pow_monitor/sources/__init__.py 和 engine.py 注册
 3. 在 config.yaml sources 下添加基础配置块
 4. 保持改动最小，只加必要代码
+5. 若新来源能拿到官网/浏览器/钱包/矿池等字段，写入 CoinLead.extra，便于 Telegram 展示
 
 ### 4C. 验证新来源
 
@@ -188,7 +196,7 @@ queries:
 
    git status
    git add config/discovered_sources.yaml docs/SOURCE_INVENTORY.md docs/DISCOVERY_SOURCES.md
-   git add pow_monitor/ config.yaml scripts/ docs/   # 如有 fetcher 改动
+   git add pow_monitor/ config.yaml scripts/ docs/
    git commit -m "learn: add N new discovery sources (简要说明)"
    git push origin main
 
@@ -204,7 +212,33 @@ queries:
 阶段 5：Telegram 每日报告（必做）
 ═══════════════════════════════════════
 
-发送 Markdown 汇总（即使 run.sh 已推送 notify_candidates 也要发）：
+**不要手写 Markdown。** 使用项目内置脚本，保证与即时推送格式一致：
+
+   python3 scripts/send_daily_report.py \
+     --searches <本轮搜索次数> \
+     --discovered-written <写入 discovered_sources.yaml 的数量> \
+     --source-added "来源名|https://..." \
+     --pending-url "https://待接入..." \
+     $( [ 已 push ] && echo --pushed )
+
+参数说明：
+- --searches：阶段 3 实际搜索轮数（至少 3）
+- --source-added：可重复，每新增一个来源传一次 name|url
+- --discovered-written：本次写入 discovered_sources.yaml 的条目数
+- --pushed：若阶段 4D 已成功 push 则加上
+- --pending-url：SOURCE_INVENTORY 底部「文档有、代码未接入」URL，最多传 3 个
+- --dry-run：仅打印不发（调试用）
+
+即使 run.sh 已发送即时 notify_candidates，**仍必须**执行上述脚本发送每日汇总。
+
+脚本读取 data/latest_scan.json，每条新高分新币会展示（有则显示，无则省略）：
+- 分数、来源、算法、代号
+- 官网 / GitHub / 浏览器 / RPC / 矿池（每行一个可点击 URL）
+- 钱包（有浏览器时生成 /address/ 链接，否则显示地址）
+- 公告（Telegram 来源）
+- 摘要、命中关键词
+
+报告结构示例：
 
 *⛏ PoW 新币监控 — 每日报告*
 
@@ -213,22 +247,35 @@ queries:
 - 新发现: X | 合格: Y | 自动推送: 是/否
 
 *新高分新币（≥40）*
-1. [分数] 标题 — 来源 — URL
-（无则写「无新高分新币」）
+1. EtherPrime (EPX) — Ethash
+分数: 45 | 来源: telegram:miningrelease | 算法: Ethash
+浏览器: https://primescan.org
+RPC: https://rpc.etherprime.org
+钱包: https://primescan.org/address/0x1234...abcd
+公告: https://t.me/miningrelease/12345
+命中: ethash, mining_release
+
+2. Rexemre/blockzero-core — Block Zero CPU mining
+分数: 112 | 来源: github
+官网: https://blockzero.example.org
+GitHub: https://github.com/Rexemre/blockzero-core
+命中: randomx, proof-of-work
 
 *今日自学习*
 - 互联网搜索次数: N
-- 新发现来源: M 个（列出名称+URL）
+- 新发现来源: M 个（名称+URL）
 - 已写入 discovered_sources.yaml: K 个
 - 已 push GitHub: 是/否
-- 文档未接入待办: 摘自 SOURCE_INVENTORY 底部
+- 文档未接入待办: ...
 
 *来源状态*
 正常: ... | 无新结果: ... | 失败: ...
 
-_请自行验证官网/GitHub/矿池，谨防诈骗。_
+_请自行验证官网/GitHub/矿池/钱包地址，谨防诈骗。_
 
-使用项目 Telegram 模块发送，或 curl Telegram API。
+若脚本失败，可 fallback：
+   python3 scripts/send_daily_report.py --dry-run
+检查输出后，用 curl 调 Telegram API 发送同样内容。
 
 ═══════════════════════════════════════
 约束
@@ -239,8 +286,9 @@ _请自行验证官网/GitHub/矿池，谨防诈骗。_
 - 新来源必须先 validate 再 commit
 - 不编造 URL；无法访问的来源不写入配置
 - 每次至少尝试 3 轮不同关键词的互联网搜索
-- 若全天无任何新来源，Telegram 仍报告「今日自学习：未发现需补充的新来源」
+- 若全天无任何新来源，Telegram 仍报告「新发现来源: 0 个」
 - 输出简洁中文
+- Telegram 消息保持简洁：每条新币 3–6 行，只展示已验证字段，不堆砌空行
 
 ═══════════════════════════════════════
 关键文件索引
@@ -253,6 +301,8 @@ _请自行验证官网/GitHub/矿池，谨防诈骗。_
 | docs/DISCOVERY_SOURCES.md | 调研候选 URL 库 |
 | config.yaml | 主配置（阈值、内置来源） |
 | scripts/validate_sources.py | 验证新 URL |
+| scripts/send_daily_report.py | 发送每日 Telegram 汇总 |
+| pow_monitor/notify/formatting.py | 新币消息格式化（链接/钱包/算法） |
 | python3 main.py --inventory | 重新生成清单 |
 ```
 
@@ -277,7 +327,24 @@ _请自行验证官网/GitHub/矿池，谨防诈骗。_
 
 ```bash
 cd ~/Downloads/pow_coin_monitor
-python3 main.py --inventory          # 生成资源清单
+python3 main.py --inventory
 python3 scripts/validate_sources.py
 ./run.sh --dry-run
+
+# 预览 Telegram 格式（不发）
+python3 -c "
+from pow_monitor.notify.formatting import format_coin_alert
+sample = [{
+  'title': 'Mystery Coin (MYS) — KawPow',
+  'score': 45,
+  'source': 'telegram:miningrelease',
+  'url': 'https://t.me/miningrelease/123',
+  'summary': 'KawPow, zpool:3333',
+  'score_reasons': ['kawpow', 'mining_release'],
+  'extra': {'ticker': 'MYS', 'algo': 'KawPow', 'website': 'https://example.com', 'wallet': '1Abcdefghijklmnopqrstuvwxyz1234567890'},
+}]
+print(format_coin_alert(sample, {'finished_at': '2026-07-05T00:00:00Z', 'sources_ok': ['telegram_public'], 'new_count': 1, 'total_leads': 1}))
+"
+
+python3 scripts/send_daily_report.py --dry-run --searches 3
 ```

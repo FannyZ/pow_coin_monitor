@@ -69,7 +69,7 @@ def fetch_exchanges(source_cfg: dict, monitor_cfg: dict) -> list[CoinLead]:
                     summary=f"New trading pair/market detected: {symbol}",
                     tags=[base.lower(), name, "exchange"],
                     discovered_at=now_iso(),
-                    extra={"symbol": symbol, "exchange": name},
+                    extra={"symbol": symbol, "exchange": name, "website": ex.get("web_url", ""), "web_url": ex.get("web_url", "")},
                 )
             )
             count += 1

@@ -43,6 +43,8 @@ def fetch_github(source_cfg: dict, monitor_cfg: dict) -> list[CoinLead]:
                     tags=topics,
                     discovered_at=now_iso(),
                     extra={
+                        "github": html_url,
+                        "homepage": item.get("homepage") or "",
                         "stars": item.get("stargazers_count", 0),
                         "updated_at": item.get("updated_at", ""),
                         "language": item.get("language", ""),
