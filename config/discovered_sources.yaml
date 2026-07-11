@@ -3,17 +3,24 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-05T01:05:00Z"
+updated_at: "2026-07-11T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 MiningPoolHub 矿池 API、Tensorium/Irium GitHub Releases、TensorHash GitHub 搜索"
+notes: "新增 Gaelium 矿池/Telegram、Oggchain/OggPoW/QSDM/Malairte GitHub Releases、Gaelium/OggPoW/QSDM/Malairte/FusionHash GitHub 搜索"
 
 sources:
   rss_feeds:
     feeds: []
   yiimp_pools:
-    pools: []
+    pools:
+      - name: gaelium
+        url: https://pool.gaelium.io/api/currencies
+        referer: https://pool.gaelium.io/
+        enabled: true
   telegram_public:
-    channels: []
+    channels:
+      - name: gaelium
+        slug: gaelium
+        enabled: true
   exchanges:
     exchanges:
       - name: freiexchange
@@ -25,6 +32,11 @@ sources:
     queries:
       - "mainnet gpu mining created:>{since}"
       - "TensorHash mainnet created:>{since}"
+      - "Gaelium mainnet created:>{since}"
+      - "OggPoW created:>{since}"
+      - "QSDM GPU mining created:>{since}"
+      - "Malairte created:>{since}"
+      - "FusionHash created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -32,6 +44,21 @@ sources:
         enabled: true
       - repo: iriumlabs/irium
         label: Irium
+        enabled: true
+      - repo: gaeliumcore/Gaelium
+        label: Gaelium
+        enabled: true
+      - repo: Oggchain/Oggchain
+        label: Oggchain
+        enabled: true
+      - repo: Oggchain/OggPoW-Miner
+        label: OggPoW Miner
+        enabled: true
+      - repo: blackbeardONE/QSDM
+        label: QSDM
+        enabled: true
+      - repo: computervirtualservices/malairte
+        label: Malairte
         enabled: true
   generic_json:
     enabled: true
