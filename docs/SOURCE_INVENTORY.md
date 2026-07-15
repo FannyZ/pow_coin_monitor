@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-14T01:05:35Z
+生成时间 UTC: 2026-07-15T01:05:16Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **56**
+- 活跃端点: **64**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -11,6 +11,7 @@
 | 类型 | 名称 | URL |
 |------|------|-----|
 | telegram | miningrelease | https://t.me/s/miningrelease |
+| telegram | gaelium | https://t.me/s/gaelium |
 | yiimp_pool | zpool | https://zpool.ca/api/currencies |
 | yiimp_pool | zergpool | https://zergpool.com/api/currencies |
 | yiimp_pool | rplant | https://pool.rplant.xyz/api/currencies |
@@ -36,6 +37,11 @@
 | github_release | Malairte | https://github.com/computervirtualservices/malairte/releases.atom |
 | github_release | FusionLayer Node | https://github.com/0xFusionLayer/fxl-node/releases.atom |
 | github_release | WarpMiner | https://github.com/0xFusionLayer/warpminer/releases.atom |
+| github_release | Keryx Miner | https://github.com/Keryx-Labs/keryx-miner/releases.atom |
+| github_release | KryoMine | https://github.com/personachain001/aethercoin/releases.atom |
+| github_release | HashLatch | https://github.com/HashLatch/PoWH/releases.atom |
+| github_release | Brisvia | https://github.com/brisvia/brisvia/releases.atom |
+| github_release | QSDM | https://github.com/blackbeardONE/QSDM/releases.atom |
 | exchange | xeggex | https://api.xeggex.com/api/v2/market/getlist |
 | exchange | freiexchange | https://api.freiexchange.com/public/ticker |
 | nicehash | algorithms | https://api2.nicehash.com/main/api/v2/mining/algorithms |
@@ -57,6 +63,8 @@
 | github_search | Malairte mainnet created:>{since} | https://api.github.com/search/repositories?q=Malairte mainnet created:>{since} |
 | github_search | FusionHash mainnet created:>{since} | https://api.github.com/search/repositories?q=FusionHash mainnet created:>{since} |
 | github_search | QSDM proof-of-work created:>{since} | https://api.github.com/search/repositories?q=QSDM proof-of-work created:>{since} |
+| github_search | KeryxHash mainnet created:>{since} | https://api.github.com/search/repositories?q=KeryxHash mainnet created:>{since} |
+| github_search | KryoMine gpu mining created:>{since} | https://api.github.com/search/repositories?q=KryoMine gpu mining created:>{since} |
 | miningpoolstats | sitemap | https://miningpoolstats.stream/sitemap.xml |
 | whattomine | coins | https://whattomine.com/coins.json |
 | safetrade | home | https://safetrade.com/ |

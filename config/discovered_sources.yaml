@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-14T01:05:00Z"
+updated_at: "2026-07-15T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 Gaelium YiiMP 矿池、Oggcoin/Oggchain/Malairte/FusionLayer GitHub Releases、Gaelium/OggPoW/Malairte/FusionHash GitHub 搜索"
+notes: "新增 Gaelium Telegram、Keryx/KryoMine/HashLatch/Brisvia/QSDM GitHub Releases、KeryxHash GitHub 搜索"
 
 sources:
   rss_feeds:
@@ -17,7 +17,10 @@ sources:
         referer: https://pool.gaelium.io/
         enabled: true
   telegram_public:
-    channels: []
+    channels:
+      - name: gaelium
+        slug: gaelium
+        enabled: true
   exchanges:
     exchanges:
       - name: freiexchange
@@ -35,6 +38,8 @@ sources:
       - "Malairte mainnet created:>{since}"
       - "FusionHash mainnet created:>{since}"
       - "QSDM proof-of-work created:>{since}"
+      - "KeryxHash mainnet created:>{since}"
+      - "KryoMine gpu mining created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -63,6 +68,21 @@ sources:
         enabled: true
       - repo: 0xFusionLayer/warpminer
         label: WarpMiner
+        enabled: true
+      - repo: Keryx-Labs/keryx-miner
+        label: Keryx Miner
+        enabled: true
+      - repo: personachain001/aethercoin
+        label: KryoMine
+        enabled: true
+      - repo: HashLatch/PoWH
+        label: HashLatch
+        enabled: true
+      - repo: brisvia/brisvia
+        label: Brisvia
+        enabled: true
+      - repo: blackbeardONE/QSDM
+        label: QSDM
         enabled: true
   generic_json:
     enabled: true
