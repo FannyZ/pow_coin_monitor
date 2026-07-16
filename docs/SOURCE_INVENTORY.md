@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-15T01:06:08Z
+生成时间 UTC: 2026-07-16T01:07:37Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **64**
+- 活跃端点: **68**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -42,6 +42,7 @@
 | github_release | HashLatch | https://github.com/HashLatch/PoWH/releases.atom |
 | github_release | Brisvia | https://github.com/brisvia/brisvia/releases.atom |
 | github_release | QSDM | https://github.com/blackbeardONE/QSDM/releases.atom |
+| github_release | HASH Miner | https://github.com/zunmax/hash-mining/releases.atom |
 | exchange | xeggex | https://api.xeggex.com/api/v2/market/getlist |
 | exchange | freiexchange | https://api.freiexchange.com/public/ticker |
 | nicehash | algorithms | https://api2.nicehash.com/main/api/v2/mining/algorithms |
@@ -65,6 +66,8 @@
 | github_search | QSDM proof-of-work created:>{since} | https://api.github.com/search/repositories?q=QSDM proof-of-work created:>{since} |
 | github_search | KeryxHash mainnet created:>{since} | https://api.github.com/search/repositories?q=KeryxHash mainnet created:>{since} |
 | github_search | KryoMine gpu mining created:>{since} | https://api.github.com/search/repositories?q=KryoMine gpu mining created:>{since} |
+| github_search | Horizon HRZN KawPoW created:>{since} | https://api.github.com/search/repositories?q=Horizon HRZN KawPoW created:>{since} |
+| github_search | FlowCoin RandomX mainnet created:>{since} | https://api.github.com/search/repositories?q=FlowCoin RandomX mainnet created:>{since} |
 | miningpoolstats | sitemap | https://miningpoolstats.stream/sitemap.xml |
 | whattomine | coins | https://whattomine.com/coins.json |
 | safetrade | home | https://safetrade.com/ |
@@ -74,6 +77,7 @@
 | generic_json | cryptunit | https://www.cryptunit.com/api/coins |
 | generic_json | grandpool | https://api.grandpool.io/pools |
 | generic_json | miningpoolhub | https://miningpoolhub.com/index.php?page=api&action=getminingandprofitsstatistics&api_key= |
+| generic_json | miningboard | https://pool.miningboard.com/api/v1/pools |
 
 ## Agent 如何追加新来源
 
