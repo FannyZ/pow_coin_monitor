@@ -3,17 +3,24 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-05T01:05:00Z"
+updated_at: "2026-07-16T01:10:00Z"
 updated_by: cursor-agent
-notes: "新增 MiningPoolHub 矿池 API、Tensorium/Irium GitHub Releases、TensorHash GitHub 搜索"
+notes: "新增 MiningBoard 矿池 API、$HASH miner GitHub Releases、Horizon/FlowCoin GitHub 搜索"
 
 sources:
   rss_feeds:
     feeds: []
   yiimp_pools:
-    pools: []
+    pools:
+      - name: gaelium
+        url: https://pool.gaelium.io/api/currencies
+        referer: https://pool.gaelium.io/
+        enabled: true
   telegram_public:
-    channels: []
+    channels:
+      - name: gaelium
+        slug: gaelium
+        enabled: true
   exchanges:
     exchanges:
       - name: freiexchange
@@ -25,6 +32,16 @@ sources:
     queries:
       - "mainnet gpu mining created:>{since}"
       - "TensorHash mainnet created:>{since}"
+      - "Gaelium mainnet created:>{since}"
+      - "OggPoW mainnet created:>{since}"
+      - "Oggchain mainnet created:>{since}"
+      - "Malairte mainnet created:>{since}"
+      - "FusionHash mainnet created:>{since}"
+      - "QSDM proof-of-work created:>{since}"
+      - "KeryxHash mainnet created:>{since}"
+      - "KryoMine gpu mining created:>{since}"
+      - "Horizon HRZN KawPoW created:>{since}"
+      - "FlowCoin RandomX mainnet created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -32,6 +49,45 @@ sources:
         enabled: true
       - repo: iriumlabs/irium
         label: Irium
+        enabled: true
+      - repo: GaeliumCore/Gaelium
+        label: Gaelium
+        enabled: true
+      - repo: Oggcoin/OggPoW-Miner
+        label: OggPoW Miner
+        enabled: true
+      - repo: Oggcoin/Ogg-Node
+        label: Ogg Node
+        enabled: true
+      - repo: Oggchain/Oggchain
+        label: Oggchain
+        enabled: true
+      - repo: computervirtualservices/malairte
+        label: Malairte
+        enabled: true
+      - repo: 0xFusionLayer/fxl-node
+        label: FusionLayer Node
+        enabled: true
+      - repo: 0xFusionLayer/warpminer
+        label: WarpMiner
+        enabled: true
+      - repo: Keryx-Labs/keryx-miner
+        label: Keryx Miner
+        enabled: true
+      - repo: personachain001/aethercoin
+        label: KryoMine
+        enabled: true
+      - repo: HashLatch/PoWH
+        label: HashLatch
+        enabled: true
+      - repo: brisvia/brisvia
+        label: Brisvia
+        enabled: true
+      - repo: blackbeardONE/QSDM
+        label: QSDM
+        enabled: true
+      - repo: zunmax/hash-mining
+        label: HASH Miner
         enabled: true
   generic_json:
     enabled: true
@@ -59,3 +115,10 @@ sources:
         id_field: symbol
         title_template: "{id} new on miningpoolhub"
         link_template: "https://miningpoolhub.com/index.php?page=getdashboard&user=&id={id}"
+      - name: miningboard
+        url: https://pool.miningboard.com/api/v1/pools
+        enabled: true
+        mode: list
+        id_field: coin
+        title_template: "{id} new on miningboard"
+        link_template: "https://pool.miningboard.com/pools/{id}"
