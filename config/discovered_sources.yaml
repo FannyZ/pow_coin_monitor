@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-17T01:10:00Z"
+updated_at: "2026-07-19T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 Pearl/BlockZero Ops GitHub Releases、RainbowMiner coins.json、Pearl/BlockZero GitHub 搜索"
+notes: "新增 FiloPoW GitHub Releases、@filotrade Telegram、MiningMadness YiiMP 矿池、Filopow GitHub 搜索"
 
 sources:
   rss_feeds:
@@ -16,10 +16,17 @@ sources:
         url: https://pool.gaelium.io/api/currencies
         referer: https://pool.gaelium.io/
         enabled: true
+      - name: miningmadness
+        url: https://miningmadness.com/api/currencies
+        referer: https://miningmadness.com/
+        enabled: true
   telegram_public:
     channels:
       - name: gaelium
         slug: gaelium
+        enabled: true
+      - name: filotrade
+        slug: filotrade
         enabled: true
   exchanges:
     exchanges:
@@ -44,6 +51,8 @@ sources:
       - "FlowCoin RandomX mainnet created:>{since}"
       - "pearlhash PoUW created:>{since}"
       - "BlockZero BLOZ RandomX created:>{since}"
+      - "Filopow mainnet created:>{since}"
+      - "FiloPoW kawpow created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -96,6 +105,9 @@ sources:
         enabled: true
       - repo: Rexemre/blockzero-ops
         label: BlockZero Ops
+        enabled: true
+      - repo: filoproject/filopow
+        label: FiloPoW
         enabled: true
   generic_json:
     enabled: true

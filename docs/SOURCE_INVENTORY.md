@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-17T01:08:55Z
+生成时间 UTC: 2026-07-19T01:03:43Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **73**
+- 活跃端点: **78**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -12,10 +12,12 @@
 |------|------|-----|
 | telegram | miningrelease | https://t.me/s/miningrelease |
 | telegram | gaelium | https://t.me/s/gaelium |
+| telegram | filotrade | https://t.me/s/filotrade |
 | yiimp_pool | zpool | https://zpool.ca/api/currencies |
 | yiimp_pool | zergpool | https://zergpool.com/api/currencies |
 | yiimp_pool | rplant | https://pool.rplant.xyz/api/currencies |
 | yiimp_pool | gaelium | https://pool.gaelium.io/api/currencies |
+| yiimp_pool | miningmadness | https://miningmadness.com/api/currencies |
 | rss | reddit_gpumining | https://www.reddit.com/r/gpumining/new/.rss |
 | rss | reddit_cryptomining | https://www.reddit.com/r/cryptomining/new/.rss |
 | rss | reddit_search | https://www.reddit.com/search.rss?q=kawpow+OR+randomx+OR+%22fair+launch%22+OR+%22new+coin%22&sort=new |
@@ -45,6 +47,7 @@
 | github_release | HASH Miner | https://github.com/zunmax/hash-mining/releases.atom |
 | github_release | Pearl | https://github.com/pearl-research-labs/pearl/releases.atom |
 | github_release | BlockZero Ops | https://github.com/Rexemre/blockzero-ops/releases.atom |
+| github_release | FiloPoW | https://github.com/filoproject/filopow/releases.atom |
 | exchange | xeggex | https://api.xeggex.com/api/v2/market/getlist |
 | exchange | freiexchange | https://api.freiexchange.com/public/ticker |
 | nicehash | algorithms | https://api2.nicehash.com/main/api/v2/mining/algorithms |
@@ -72,6 +75,8 @@
 | github_search | FlowCoin RandomX mainnet created:>{since} | https://api.github.com/search/repositories?q=FlowCoin RandomX mainnet created:>{since} |
 | github_search | pearlhash PoUW created:>{since} | https://api.github.com/search/repositories?q=pearlhash PoUW created:>{since} |
 | github_search | BlockZero BLOZ RandomX created:>{since} | https://api.github.com/search/repositories?q=BlockZero BLOZ RandomX created:>{since} |
+| github_search | Filopow mainnet created:>{since} | https://api.github.com/search/repositories?q=Filopow mainnet created:>{since} |
+| github_search | FiloPoW kawpow created:>{since} | https://api.github.com/search/repositories?q=FiloPoW kawpow created:>{since} |
 | miningpoolstats | sitemap | https://miningpoolstats.stream/sitemap.xml |
 | whattomine | coins | https://whattomine.com/coins.json |
 | safetrade | home | https://safetrade.com/ |
