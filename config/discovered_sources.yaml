@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-19T01:05:00Z"
+updated_at: "2026-07-20T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 FiloPoW GitHub Releases、@filotrade Telegram、MiningMadness YiiMP 矿池、Filopow GitHub 搜索"
+notes: "新增 @cryptomining_news Telegram、modelOS/HydraX GitHub Releases、modelOS MDL GitHub 搜索"
 
 sources:
   rss_feeds:
@@ -27,6 +27,9 @@ sources:
         enabled: true
       - name: filotrade
         slug: filotrade
+        enabled: true
+      - name: cryptomining_news
+        slug: cryptomining_news
         enabled: true
   exchanges:
     exchanges:
@@ -53,6 +56,8 @@ sources:
       - "BlockZero BLOZ RandomX created:>{since}"
       - "Filopow mainnet created:>{since}"
       - "FiloPoW kawpow created:>{since}"
+      - "modelOS MDL mainnet created:>{since}"
+      - "Hydrax pearlhash miner created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -108,6 +113,12 @@ sources:
         enabled: true
       - repo: filoproject/filopow
         label: FiloPoW
+        enabled: true
+      - repo: modeloslab/modelos
+        label: modelOS
+        enabled: true
+      - repo: bighurt23/hydrax-miner
+        label: HydraX Miner
         enabled: true
   generic_json:
     enabled: true
