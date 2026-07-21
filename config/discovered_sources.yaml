@@ -3,13 +3,17 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-20T01:05:00Z"
+updated_at: "2026-07-21T01:07:00Z"
 updated_by: cursor-agent
-notes: "新增 @cryptomining_news Telegram、modelOS/HydraX GitHub Releases、modelOS MDL GitHub 搜索"
+notes: "新增 NonKYC/NestEx 交易所 JSON API、AltcoinsTalks 论坛 RSS"
 
 sources:
   rss_feeds:
-    feeds: []
+    feeds:
+      - name: altcoinstalks
+        url: https://www.altcoinstalks.com/index.php?action=.xml;type=rss
+        enabled: true
+        keywords: ["mining", "pow", "gpu", "mainnet", "kawpow", "randomx", "announcement", "launch"]
   yiimp_pools:
     pools:
       - name: gaelium
@@ -160,3 +164,17 @@ sources:
         id_field: id
         title_template: "{id} new in RainbowMiner coins.json"
         link_template: "https://github.com/RainbowMiner/RainbowMiner"
+      - name: nonkyc
+        url: https://nonkyc.io/api/v2/market/getlist
+        enabled: true
+        mode: list
+        id_field: symbol
+        title_template: "{id} new on nonkyc"
+        link_template: "https://nonkyc.io/"
+      - name: nestex
+        url: https://trade.nestex.one/api/cg/tickers
+        enabled: true
+        mode: list
+        id_field: ticker_id
+        title_template: "{id} new on nestex"
+        link_template: "https://trade.nestex.one/"

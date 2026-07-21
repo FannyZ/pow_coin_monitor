@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-20T01:05:21Z
+生成时间 UTC: 2026-07-21T01:07:49Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **83**
+- 活跃端点: **86**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -25,6 +25,7 @@
 | rss | twominers_blog | https://2miners.com/blog/feed/ |
 | rss | hnrss_pow | https://hnrss.org/newest?q=pow+OR+kawpow+OR+randomx+OR+%22new+coin%22 |
 | rss | litecointalk_ann | https://litecointalk.io/c/project-announcements/6.rss |
+| rss | altcoinstalks | https://www.altcoinstalks.com/index.php?action=.xml;type=rss |
 | rainbowminer | coinsdb | https://raw.githubusercontent.com/RainbowMiner/RainbowMiner/master/Data/coinsdb.json |
 | coinpaprika | coins | https://api.coinpaprika.com/v1/coins |
 | github_release | BTX | https://github.com/btxchain/btx/releases.atom |
@@ -93,6 +94,8 @@
 | generic_json | miningpoolhub | https://miningpoolhub.com/index.php?page=api&action=getminingandprofitsstatistics&api_key= |
 | generic_json | miningboard | https://pool.miningboard.com/api/v1/pools |
 | generic_json | rainbowminer_coins | https://raw.githubusercontent.com/RainbowMiner/RainbowMiner/master/Data/coins.json |
+| generic_json | nonkyc | https://nonkyc.io/api/v2/market/getlist |
+| generic_json | nestex | https://trade.nestex.one/api/cg/tickers |
 
 ## Agent 如何追加新来源
 
