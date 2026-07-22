@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-21T01:07:00Z"
+updated_at: "2026-07-22T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 NonKYC/NestEx 交易所 JSON API、AltcoinsTalks 论坛 RSS"
+notes: "新增 FusionLayer Telegram、CoinEx/CoinStore 小所 JSON API"
 
 sources:
   rss_feeds:
@@ -34,6 +34,9 @@ sources:
         enabled: true
       - name: cryptomining_news
         slug: cryptomining_news
+        enabled: true
+      - name: fusionlayer
+        slug: fusionlayer
         enabled: true
   exchanges:
     exchanges:
@@ -178,3 +181,19 @@ sources:
         id_field: ticker_id
         title_template: "{id} new on nestex"
         link_template: "https://trade.nestex.one/"
+      - name: coinex
+        url: https://api.coinex.com/v1/market/ticker/all
+        enabled: true
+        mode: list_path
+        list_path: data.ticker
+        id_field: id
+        title_template: "{id} new on coinex"
+        link_template: "https://www.coinex.com/en/exchange"
+      - name: coinstore
+        url: https://api.coinstore.com/api/v1/market/tickers
+        enabled: true
+        mode: list_path
+        list_path: data
+        id_field: symbol
+        title_template: "{id} new on coinstore"
+        link_template: "https://www.coinstore.com/#/spot/{id}"
