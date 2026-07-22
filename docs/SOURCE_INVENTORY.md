@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-21T01:07:49Z
+生成时间 UTC: 2026-07-22T01:06:16Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **86**
+- 活跃端点: **89**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -14,6 +14,7 @@
 | telegram | gaelium | https://t.me/s/gaelium |
 | telegram | filotrade | https://t.me/s/filotrade |
 | telegram | cryptomining_news | https://t.me/s/cryptomining_news |
+| telegram | fusionlayer | https://t.me/s/fusionlayer |
 | yiimp_pool | zpool | https://zpool.ca/api/currencies |
 | yiimp_pool | zergpool | https://zergpool.com/api/currencies |
 | yiimp_pool | rplant | https://pool.rplant.xyz/api/currencies |
@@ -96,6 +97,8 @@
 | generic_json | rainbowminer_coins | https://raw.githubusercontent.com/RainbowMiner/RainbowMiner/master/Data/coins.json |
 | generic_json | nonkyc | https://nonkyc.io/api/v2/market/getlist |
 | generic_json | nestex | https://trade.nestex.one/api/cg/tickers |
+| generic_json | coinex | https://api.coinex.com/v1/market/ticker/all |
+| generic_json | coinstore | https://api.coinstore.com/api/v1/market/tickers |
 
 ## Agent 如何追加新来源
 
