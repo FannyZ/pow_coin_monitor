@@ -1,9 +1,9 @@
 # 当前监控资源清单（自动生成）
 
-生成时间 UTC: 2026-07-22T01:06:16Z
+生成时间 UTC: 2026-07-23T01:06:29Z
 
 - 活跃来源模块: **15**
-- 活跃端点: **89**
+- 活跃端点: **97**
 - 文档中未接入 URL（待评估）: **0**
 
 ## 活跃端点
@@ -15,6 +15,7 @@
 | telegram | filotrade | https://t.me/s/filotrade |
 | telegram | cryptomining_news | https://t.me/s/cryptomining_news |
 | telegram | fusionlayer | https://t.me/s/fusionlayer |
+| telegram | brisvia | https://t.me/s/brisvia |
 | yiimp_pool | zpool | https://zpool.ca/api/currencies |
 | yiimp_pool | zergpool | https://zergpool.com/api/currencies |
 | yiimp_pool | rplant | https://pool.rplant.xyz/api/currencies |
@@ -27,6 +28,7 @@
 | rss | hnrss_pow | https://hnrss.org/newest?q=pow+OR+kawpow+OR+randomx+OR+%22new+coin%22 |
 | rss | litecointalk_ann | https://litecointalk.io/c/project-announcements/6.rss |
 | rss | altcoinstalks | https://www.altcoinstalks.com/index.php?action=.xml;type=rss |
+| rss | ergoforum | https://www.ergoforum.org/latest.rss |
 | rainbowminer | coinsdb | https://raw.githubusercontent.com/RainbowMiner/RainbowMiner/master/Data/coinsdb.json |
 | coinpaprika | coins | https://api.coinpaprika.com/v1/coins |
 | github_release | BTX | https://github.com/btxchain/btx/releases.atom |
@@ -53,6 +55,9 @@
 | github_release | FiloPoW | https://github.com/filoproject/filopow/releases.atom |
 | github_release | modelOS | https://github.com/modeloslab/modelos/releases.atom |
 | github_release | HydraX Miner | https://github.com/bighurt23/hydrax-miner/releases.atom |
+| github_release | QUB Core | https://github.com/AlxProe/qub-core/releases.atom |
+| github_release | Sharecoin | https://github.com/TVHeroes/sharecoin/releases.atom |
+| github_release | Dilithion | https://github.com/dilithion/dilithion/releases.atom |
 | exchange | xeggex | https://api.xeggex.com/api/v2/market/getlist |
 | exchange | freiexchange | https://api.freiexchange.com/public/ticker |
 | nicehash | algorithms | https://api2.nicehash.com/main/api/v2/mining/algorithms |
@@ -84,6 +89,9 @@
 | github_search | FiloPoW kawpow created:>{since} | https://api.github.com/search/repositories?q=FiloPoW kawpow created:>{since} |
 | github_search | modelOS MDL mainnet created:>{since} | https://api.github.com/search/repositories?q=modelOS MDL mainnet created:>{since} |
 | github_search | Hydrax pearlhash miner created:>{since} | https://api.github.com/search/repositories?q=Hydrax pearlhash miner created:>{since} |
+| github_search | Sharecoin mainnet created:>{since} | https://api.github.com/search/repositories?q=Sharecoin mainnet created:>{since} |
+| github_search | QUB proof-of-work created:>{since} | https://api.github.com/search/repositories?q=QUB proof-of-work created:>{since} |
+| github_search | Dilithion mainnet created:>{since} | https://api.github.com/search/repositories?q=Dilithion mainnet created:>{since} |
 | miningpoolstats | sitemap | https://miningpoolstats.stream/sitemap.xml |
 | whattomine | coins | https://whattomine.com/coins.json |
 | safetrade | home | https://safetrade.com/ |

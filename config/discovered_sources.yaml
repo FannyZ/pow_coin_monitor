@@ -3,9 +3,9 @@
 #          exchanges.exchanges | github.queries | github_releases.repos | generic_json.endpoints
 
 version: 1
-updated_at: "2026-07-22T01:05:00Z"
+updated_at: "2026-07-23T01:05:00Z"
 updated_by: cursor-agent
-notes: "新增 FusionLayer Telegram、CoinEx/CoinStore 小所 JSON API"
+notes: "新增 Ergo Forum RSS、brisvia Telegram、QUB/Sharecoin/Dilithion GitHub Releases 与搜索 query"
 
 sources:
   rss_feeds:
@@ -14,6 +14,10 @@ sources:
         url: https://www.altcoinstalks.com/index.php?action=.xml;type=rss
         enabled: true
         keywords: ["mining", "pow", "gpu", "mainnet", "kawpow", "randomx", "announcement", "launch"]
+      - name: ergoforum
+        url: https://www.ergoforum.org/latest.rss
+        enabled: true
+        keywords: ["mining", "pow", "pool", "mainnet", "autolykos", "gpu", "launch", "coin"]
   yiimp_pools:
     pools:
       - name: gaelium
@@ -37,6 +41,9 @@ sources:
         enabled: true
       - name: fusionlayer
         slug: fusionlayer
+        enabled: true
+      - name: brisvia
+        slug: brisvia
         enabled: true
   exchanges:
     exchanges:
@@ -65,6 +72,9 @@ sources:
       - "FiloPoW kawpow created:>{since}"
       - "modelOS MDL mainnet created:>{since}"
       - "Hydrax pearlhash miner created:>{since}"
+      - "Sharecoin mainnet created:>{since}"
+      - "QUB proof-of-work created:>{since}"
+      - "Dilithion mainnet created:>{since}"
   github_releases:
     repos:
       - repo: tensorium-labs/tensorium-core
@@ -126,6 +136,15 @@ sources:
         enabled: true
       - repo: bighurt23/hydrax-miner
         label: HydraX Miner
+        enabled: true
+      - repo: AlxProe/qub-core
+        label: QUB Core
+        enabled: true
+      - repo: TVHeroes/sharecoin
+        label: Sharecoin
+        enabled: true
+      - repo: dilithion/dilithion
+        label: Dilithion
         enabled: true
   generic_json:
     enabled: true
